@@ -1,0 +1,151 @@
+CS12320
+newquestionbank
+CS12320
+Java questions 1
+singlechoice
+Which data type you should use to assign point number in java which has more decimal digit?
+english
+10
+int
+boolean
+double
+float
+char
+String
+short
+long
+byte
+.
+double
+singlechoice
+What access specifier we should use in most fields?
+english
+10
+protected
+default
+private
+public
+.
+.
+.
+.
+.
+.
+private
+filltheblanks
+A static method belongs to the BLANK rather than the BLANK.
+english
+2
+class
+object
+filltheblanks
+Konstruktor można zdefiniować jako specjalny typ BLANK, który jest używany do inicjowania stanu obiektu.
+polish
+1
+metody
+singlechoice
+Jakiego specyfikatora dostępu powinniśmy używać w większości dziedzin?
+polish
+10
+protected
+default
+private
+public
+.
+.
+.
+.
+.
+.
+private
+singlechoice
+Jakiego typu danych należy użyć do przypisania liczby dziesiętnej w Javie, który ma więcej cyfr dziesiętnych?
+polish
+10
+int
+boolean
+double
+float
+char
+String
+short
+long
+byte
+.
+double
+filltheblanks
+Java Virtual Machine to maszyna wirtualna, która umożliwia BLANK uruchomienie programu BLANK.
+polish
+2
+komputer
+java
+filltheblanks
+Metoda statyczna należy do BLANK, a nie do BLANK.
+polish
+2
+klasy
+obiektu
+filltheblanks
+The constructor can be defined as the special type of BLANK that is used to initialize the state of an object.
+english
+1
+method
+filltheblanks
+Java Virtual Machine is a virtual machine that enables the BLANK to run the BLANK program.
+english
+2
+computer
+java
+newquestionbank
+CS12320
+Java questions 2
+singlechoice
+Java pozwala nam zachować nasz kod jako połączenie różnych typów obiektów, które obejmują zarówno dane, jak i zachowanie. Oznacza to, że java jest ...
+polish
+10
+prosta
+przenośna
+niezależna od platformy
+krzepka
+zorientowana obiektowo
+zabezpieczona
+zinterpretowana
+wysoka wydajność
+dynamiczna
+rozpowszechniona
+zorientowana obiektowo
+filltheblanks
+Konstruktora nigdy nie można zadeklarować jako BLANK, ponieważ nigdy nie jest dziedziczony.
+polish
+1
+finalny
+filltheblanks
+The constructor can never be declared as BLANK because it is never inherited.
+english
+1
+final
+filltheblanks
+The BLANK keyword in Java is a reference variable that is used to refer to the immediate parent class object.
+english
+1
+super
+filltheblanks
+Słowo kluczowe BLANK w Javie jest zmienną referencyjną używaną do odwoływania się do bezpośredniego obiektu klasy nadrzędnej.
+polish
+1
+super
+singlechoice
+Java allows us to maintain our code as the combination of different type of objects that incorporates both data and behavior. It means that java is...
+english
+10
+simple
+portable
+platform independent
+robust
+object-oriented
+secured
+interpreted
+high performance
+dynamic
+distributed
+object-oriented
