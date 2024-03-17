@@ -1,7 +1,9 @@
 package uk.ac.aber.dcs.mam148;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -10,17 +12,15 @@ import java.util.Scanner;
  * @version 25th April 2021
  */
 public class Question {
-    String questionStatement;
-    String[] answers;
-    String language;
+    private String questionStatement;
+    private List<String> answers;
+    private String language;
 
     /**
      * No argument constructor
      */
     public Question(){
-        questionStatement = "unknown";
-        answers = new String[1];
-        language = "english";
+        this("unknown", new ArrayList<>(), "english");
     }
 
     /**
@@ -29,7 +29,7 @@ public class Question {
      * @param answers Answers for the question
      * @param language Language of the question
      */
-    public Question(String questionStatement, String[] answers, String language){
+    public Question(String questionStatement, List<String>answers, String language){
         this.questionStatement = questionStatement;
         this.answers = answers;
         this.language = language;
@@ -53,17 +53,17 @@ public class Question {
 
     /**
      * Set answers for the question
-     * @param newAnswers Answers for the question
+     * @param answers Answers for the question
      */
-    public void setAnswers(String[] newAnswers){
-        answers = newAnswers;
+    public void setAnswers(List<String> answers){
+        this.answers = answers;
     }
 
     /**
      * Obtain answers for the question
      * @return Answers for the question
      */
-    public String[] getAnswers(){
+    public List<String> getAnswers(){
         return answers;
     }
 
@@ -91,10 +91,9 @@ public class Question {
         questionStatement = infile.next();
         language = infile.next();
         int numAnswers = infile.nextInt();
-        answers = new String[numAnswers];
+        answers = new ArrayList<>();
         for(int count = 0; count < numAnswers; count++){
-            String answer = infile.next();
-            answers[count] = answer;
+            answers.add(infile.next());
         }
     }
 
@@ -104,10 +103,8 @@ public class Question {
     public void save(PrintWriter pw){
         pw.println(questionStatement);
         pw.println(language);
-        pw.println(answers.length);
-        for(int count = 0; count < answers.length; count++){
-            pw.println(answers[count]);
-        }
+        pw.println(answers.size());
+        answers.forEach(pw::println);
     }
 
     /**
@@ -117,7 +114,7 @@ public class Question {
     public String toString() {
         return "Question{" +
                 "question='" + questionStatement + '\'' +
-                ", answers=" + Arrays.toString(answers) +
+                ", answers=" + answers +
                 '}';
     }
 }

@@ -5,7 +5,7 @@ Java questions 1
 singlechoice
 Which data type you should use to assign point number in java which has more decimal digit?
 english
-10
+9
 int
 boolean
 double
@@ -15,22 +15,15 @@ String
 short
 long
 byte
-.
 double
 singlechoice
 What access specifier we should use in most fields?
 english
-10
+4
 protected
 default
 private
 public
-.
-.
-.
-.
-.
-.
 private
 filltheblanks
 A static method belongs to the BLANK rather than the BLANK.
@@ -38,30 +31,26 @@ english
 2
 class
 object
+2
 filltheblanks
 Konstruktor można zdefiniować jako specjalny typ BLANK, który jest używany do inicjowania stanu obiektu.
 polish
 1
 metody
+1
 singlechoice
 Jakiego specyfikatora dostępu powinniśmy używać w większości dziedzin?
 polish
-10
+4
 protected
 default
 private
 public
-.
-.
-.
-.
-.
-.
 private
 singlechoice
 Jakiego typu danych należy użyć do przypisania liczby dziesiętnej w Javie, który ma więcej cyfr dziesiętnych?
 polish
-10
+9
 int
 boolean
 double
@@ -71,7 +60,6 @@ String
 short
 long
 byte
-.
 double
 filltheblanks
 Java Virtual Machine to maszyna wirtualna, która umożliwia BLANK uruchomienie programu BLANK.
@@ -79,23 +67,27 @@ polish
 2
 komputer
 java
+2
 filltheblanks
 Metoda statyczna należy do BLANK, a nie do BLANK.
 polish
 2
 klasy
 obiektu
+2
 filltheblanks
 The constructor can be defined as the special type of BLANK that is used to initialize the state of an object.
 english
 1
 method
+1
 filltheblanks
 Java Virtual Machine is a virtual machine that enables the BLANK to run the BLANK program.
 english
 2
 computer
 java
+2
 newquestionbank
 CS12320
 Java questions 2
@@ -119,21 +111,25 @@ Konstruktora nigdy nie można zadeklarować jako BLANK, ponieważ nigdy nie jest
 polish
 1
 finalny
+1
 filltheblanks
 The constructor can never be declared as BLANK because it is never inherited.
 english
 1
 final
+1
 filltheblanks
 The BLANK keyword in Java is a reference variable that is used to refer to the immediate parent class object.
 english
 1
 super
+1
 filltheblanks
 Słowo kluczowe BLANK w Javie jest zmienną referencyjną używaną do odwoływania się do bezpośredniego obiektu klasy nadrzędnej.
 polish
 1
 super
+1
 singlechoice
 Java allows us to maintain our code as the combination of different type of objects that incorporates both data and behavior. It means that java is...
 english

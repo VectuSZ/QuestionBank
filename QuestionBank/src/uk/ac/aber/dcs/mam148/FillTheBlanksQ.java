@@ -2,6 +2,7 @@ package uk.ac.aber.dcs.mam148;
 
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -16,30 +17,19 @@ public class FillTheBlanksQ extends Question{
      * No argument constructor
      */
     public FillTheBlanksQ(){
-        questionStatement = "unknown";
-        answers = new String[1];
-        language = "english";
-        numOfBlanks = 10;
+        super();
     }
 
     /**
      * Constructor for the fill the blanks question
      * @param questionStatement The question statement
-     * @param numOfB Number of blanks
+     * @param numOfBlanks Number of blanks
      * @param answers All answers of the question
      * @param language Language of the question
      */
-    public FillTheBlanksQ(String questionStatement, int numOfB ,String[] answers, String language){
+    public FillTheBlanksQ(String questionStatement, int numOfBlanks, List<String> answers, String language){
         super(questionStatement, answers, language);
-        numOfBlanks = numOfB;
-    }
-
-    /**
-     * Set the number of blanks of the question
-     * @param newNumOfBlanks The number of blanks
-     */
-    public void setNumOfBlanks(int newNumOfBlanks){
-        numOfBlanks = newNumOfBlanks;
+        this.numOfBlanks = numOfBlanks;
     }
 
     /**
@@ -56,6 +46,7 @@ public class FillTheBlanksQ extends Question{
     @Override
     public void load(Scanner infile){
         super.load(infile);
+        numOfBlanks = infile.nextInt();
     }
 
     /**
@@ -65,16 +56,17 @@ public class FillTheBlanksQ extends Question{
     public void save(PrintWriter pw){
         pw.println("filltheblanks");
         super.save(pw);
+        pw.println(numOfBlanks);
     }
 
     /**
      * A basic implementation to just return all the data in string form
      */
     public String toString(){
-        return "Question statement is: " + questionStatement + "\n" +
+        return "Question statement is: " + getQuestionStatement() + "\n" +
                 "Question language is: " + getLanguage() + "\n" +
-                "Number of missing words/numbers: " + answers.length + "\n" +
-                "Missing words/numbers: " + Arrays.toString(answers) + "\n";
+                "Number of missing words/numbers: " + getNumOfBlanks() + "\n" +
+                "Missing words/numbers: " + getAnswers() + "\n";
     }
 
 }

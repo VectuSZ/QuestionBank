@@ -2,6 +2,7 @@ package uk.ac.aber.dcs.mam148;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -11,23 +12,23 @@ import java.util.Scanner;
  */
 public class Module {
     private String moduleIdentifier;
-    private ArrayList<QuestionBank> questionBanks;
+    private final List<QuestionBank> questionBanks;
 
     /**
      * No argument constructor
      */
     public Module() {
         moduleIdentifier = "";
-        questionBanks = new ArrayList<QuestionBank>();
+        questionBanks = new ArrayList<>();
     }
 
     /**
      * Constructor for the module
-     * @param identifier The module's identifier
+     * @param moduleIdentifier The module's identifier
      */
-    public Module(String identifier) {
-        moduleIdentifier = identifier;
-        questionBanks = new ArrayList<QuestionBank>();
+    public Module(String moduleIdentifier) {
+        this.moduleIdentifier = moduleIdentifier;
+        questionBanks = new ArrayList<>();
     }
 
     /**
@@ -40,10 +41,10 @@ public class Module {
 
     /**
      * Set the identifier of the module
-     * @param newModuleIdentifier Module identifier
+     * @param moduleIdentifier Module identifier
      */
-    public void setModuleIdentifier(String newModuleIdentifier) {
-        moduleIdentifier = newModuleIdentifier;
+    public void setModuleIdentifier(String moduleIdentifier) {
+        this.moduleIdentifier = moduleIdentifier;
     }
 
     /**
@@ -52,14 +53,8 @@ public class Module {
      * @return Question bank
      */
     public QuestionBank getQuestionBank(String bankIdentifier) {
-        QuestionBank result = null;
-        for (QuestionBank qb : questionBanks) {
-            if (bankIdentifier.equals(qb.getBankIdentifier())) {
-                result = qb;
-                break;
-            }
-        }
-        return result;
+        return questionBanks.stream().filter(qb -> bankIdentifier.equals(qb.getBankIdentifier())).findFirst().orElse(null);
+
     }
 
     /**
@@ -82,9 +77,7 @@ public class Module {
      */
     public void listQuestionBanksForStudent(){
         System.out.println("All available question banks: ");
-        for(QuestionBank qb : questionBanks){
-            System.out.println("Question bank: " + qb.getBankIdentifier());
-        }
+        questionBanks.forEach(qb -> System.out.println("Question bank: " + qb.getBankIdentifier()));
     }
 
     /**
@@ -94,7 +87,7 @@ public class Module {
     public void removeQuestionBank(String bankIdentifier) {
         if (getQuestionBank(bankIdentifier).getQuestions().isEmpty()) {
             questionBanks.remove(getQuestionBank(bankIdentifier));
-            System.out.println("You've removed Question Bank");
+            System.out.println("Question bank " + bankIdentifier + " has been successfully deleted.");
         } else {
             System.out.println("You can't remove question bank if it's not empty");
         }
@@ -106,14 +99,7 @@ public class Module {
      * @return true if exists, false if doesn't exist
      */
     public boolean doesQuestionBankExist(String bankIdentifier){
-        boolean test = false;
-        for(QuestionBank qb : questionBanks){
-            if(bankIdentifier.equals(qb.getBankIdentifier())){
-                test = true;
-                break;
-            }
-        }
-        return test;
+        return questionBanks.stream().anyMatch(qb -> bankIdentifier.equals(qb.getBankIdentifier()));
     }
 
     /**
@@ -125,7 +111,6 @@ public class Module {
              Scanner infile = new Scanner(br)) {
 
             infile.useDelimiter("\r?\n|\r");
-
             moduleIdentifier = infile.next();
             infile.next();
 
@@ -144,7 +129,7 @@ public class Module {
     public void save(String filename) throws IOException{
         try (FileWriter fw = new FileWriter(filename);
              BufferedWriter bw = new BufferedWriter(fw);
-             PrintWriter outfile = new PrintWriter(bw);) {
+             PrintWriter outfile = new PrintWriter(bw)) {
 
             outfile.println(moduleIdentifier);
             for(QuestionBank qb : questionBanks){

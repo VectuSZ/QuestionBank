@@ -3,6 +3,7 @@ package uk.ac.aber.dcs.mam148;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Scanner;
 public class QuestionBank {
     private String moduleIdentifier;
     private String bankIdentifier;
-    private ArrayList<Question> questions;
+    private final List<Question> questions;
     private int capacity;
 
     /**
@@ -22,18 +23,18 @@ public class QuestionBank {
     public QuestionBank(){
         moduleIdentifier = "";
         bankIdentifier = "";
-        questions = new ArrayList<Question>();
+        questions = new ArrayList<>();
     }
 
     /**
      * Constructor for the question bank
-     * @param mIdentifier The module's identifier
-     * @param bIdentifier The bank's identifier
+     * @param moduleIdentifier The module's identifier
+     * @param bankIdentifier The bank's identifier
      */
-    public QuestionBank(String mIdentifier, String bIdentifier){
-        moduleIdentifier = mIdentifier;
-        bankIdentifier = bIdentifier;
-        questions = new ArrayList<Question>();
+    public QuestionBank(String moduleIdentifier, String bankIdentifier){
+        this.moduleIdentifier = moduleIdentifier;
+        this.bankIdentifier = bankIdentifier;
+        questions = new ArrayList<>();
     }
 
     /**
@@ -70,10 +71,10 @@ public class QuestionBank {
 
     /**
      * Set the capacity of the question bank
-     * @param newCapacity The capacity of the question bank
+     * @param capacity The capacity of the question bank
      */
-    public void setCapacity(int newCapacity){
-        capacity = newCapacity;
+    public void setCapacity(int capacity){
+        this.capacity = capacity;
     }
 
     /**
@@ -88,7 +89,7 @@ public class QuestionBank {
      * Obtain questions from the question bank
      * @return Questions arraylist
      */
-    public ArrayList<Question> getQuestions(){
+    public List<Question> getQuestions(){
         return questions;
     }
 
@@ -113,9 +114,7 @@ public class QuestionBank {
      * List all question from the question bank with its number
      */
     public void listQuestions(){
-        for(int i = 0; i < questions.size(); i++){
-            System.out.println("Question number " + (i + 1) + ":\n" + questions.get(i));
-        }
+        questions.forEach(question -> System.out.println("Question number " + (questions.indexOf(question) + 1) + ":\n" + question));
     }
 
     /**
@@ -150,30 +149,30 @@ public class QuestionBank {
      */
     public void load(Scanner infile){
 
-            moduleIdentifier = infile.next();
-            bankIdentifier = infile.next();
+        moduleIdentifier = infile.next();
+        bankIdentifier = infile.next();
 
-            while (infile.hasNext()){
-                Question question = null;
-                String type = infile.next();
-                switch (type){
-                    case "singlechoice":
-                        question = new SingleChoiceQ();
-                        break;
-                    case "filltheblanks":
-                        question = new FillTheBlanksQ();
-                        break;
-                    case "newquestionbank":
-                        break;
-                }
-                if(question != null){
-                    question.load(infile);
-                    this.addQuestion(question);
-                }
-                if(question == null){
+        while (infile.hasNext()){
+            Question question = null;
+            String type = infile.next();
+            switch (type){
+                case "singlechoice":
+                    question = new SingleChoiceQ();
                     break;
-                }
+                case "filltheblanks":
+                    question = new FillTheBlanksQ();
+                    break;
+                case "newquestionbank":
+                    break;
             }
+            if(question != null){
+                question.load(infile);
+                this.addQuestion(question);
+            }
+            if(question == null){
+                break;
+            }
+        }
     }
 
     /**
@@ -183,9 +182,7 @@ public class QuestionBank {
 
             pw.println(moduleIdentifier);
             pw.println(bankIdentifier);
-            for(Question q : questions){
-                q.save(pw);
-        }
+            questions.forEach(question -> question.save(pw));
     }
 
     /**

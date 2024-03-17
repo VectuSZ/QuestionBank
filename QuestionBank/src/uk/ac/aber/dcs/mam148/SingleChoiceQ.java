@@ -2,6 +2,7 @@ package uk.ac.aber.dcs.mam148;
 
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -16,9 +17,7 @@ public class SingleChoiceQ extends Question{
      * No argument constructor
      */
     public SingleChoiceQ(){
-        questionStatement = "unkmown";
-        answers = new String[10];
-        language = "english";
+        super();
         correctAnswer = "unknown";
     }
 
@@ -26,20 +25,20 @@ public class SingleChoiceQ extends Question{
      * Contructor for the Single choice question
      * @param questionStatement The question statement
      * @param answers All possible answers
-     * @param cAnswer Correct answer for the question
+     * @param correctAnswer Correct answer for the question
      * @param language Language of the question
      */
-    public SingleChoiceQ(String questionStatement, String[] answers, String cAnswer, String language){
+    public SingleChoiceQ(String questionStatement, List<String> answers, String correctAnswer, String language){
         super(questionStatement, answers, language);
-        correctAnswer = cAnswer;
+        this.correctAnswer = correctAnswer;
     }
 
     /**
      * Set the correct answer of the question
-     * @param newCorrectAnswer The correct answer of the question
+     * @param correctAnswer The correct answer of the question
      */
-    public void setCorrectAnswer(String newCorrectAnswer){
-        correctAnswer = newCorrectAnswer;
+    public void setCorrectAnswer(String correctAnswer){
+        this.correctAnswer = correctAnswer;
     }
 
     /**
@@ -74,9 +73,9 @@ public class SingleChoiceQ extends Question{
      * A basic implementation to just return all the data in string form
      */
     public String toString(){
-        return "Question statement is: " + questionStatement + "\n" +
+        return "Question statement is: " + getQuestionStatement() + "\n" +
                 "Question language is: " + getLanguage() +"\n" +
-                "Possible answers: " + Arrays.toString(answers) + "\n" +
+                "Possible answers: " + getAnswers() + "\n" +
                 "Correct answer is: " + correctAnswer + "\n";
     }
 }
